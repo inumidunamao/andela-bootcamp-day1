@@ -1,29 +1,21 @@
-function primeNumbers(n,y){
-	if (n < 0 || n.constructor !== Number) {
-		return false;
+'use strict';
+
+function dataTypes (data){
+	if (data === null || data === undefined) {
+		return 'no value';
+	} else if (data.constructor === Boolean){
+		return data;
+	} else if (data.constructor === Number){
+		return (data > 99) ? 
+			(data === 100) ? 'equal to 100' : 'more than 100'
+			: 'less than 100';
+	} else if (data.constructor === String){
+		return data.length;
+	} else if (data.constructor === Array){
+		return data[2];
+	} else if (data.constructor === Function){
+		return data(true);
 	}
-	if (!y) {
-		var y = [];
-	}
-	if (n == 0){
-		return y;
-	}
-	n = parseInt(n);
-	//function check if number is prime
-	function is_prime(x){
-		var prime = true;
-		var sqrtx = Math.floor(Math.sqrt(x));
-		for (var i = 2; i <= sqrtx; i++){
-			if (x % i == 0){
-				prime = false;
-			}
-		} 
-		return (x == 1) ? false : prime;
-	}
-	if (is_prime(n)){
-		y.unshift(n);
-	}
-	return primeNumbers(n-1, y);
-	
 }
-module.exports = {getPrimes : primeNumbers}
+
+module.exports = {dataTypes : dataTypes}
