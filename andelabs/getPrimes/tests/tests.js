@@ -53,7 +53,7 @@ describe("Case for float", function() {
   });
 });
 
-describe("Case for datatypes", function() {
+describe("Case for datatypes and edge cases", function() {
   describe("Case for Integers or float", function(){
     it("should return '1000.322' for No Primes", function() {
       expect(getPrimes(1000.322).length).toEqual(168);
@@ -72,6 +72,17 @@ describe("Case for datatypes", function() {
   describe("Case for Objects", function(){
     it("should return 'false' for '{age:10}'", function() {
       expect(getPrimes({age:10})).toEqual(false);
+    });
+  });
+  describe("Case for edge cases", function(){
+    it("should return false for empy arguments", function() {
+      expect(getPrimes()).toEqual(false);
+    });
+    it("should return false for false", function() {
+      expect(getPrimes(false)).toEqual(false);
+    });
+    it("should return false for false", function() {
+      expect(getPrimes(null)).toEqual(false);
     });
   });
 });
